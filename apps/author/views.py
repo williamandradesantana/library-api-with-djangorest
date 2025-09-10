@@ -8,20 +8,14 @@ from .services.all_authors import ListAllAuthorsService
 from .services.get_author import OneAuthorService
 from .services.updated_author import UpdatedAuthorService
 from .services.delete import DeleteAuthorService
-from .services.pagination import PaginateService
-
-
-class AuthorAPIPagination(PageNumberPagination):
-    page_size = 5
+from utils.pagination import Pagination
 
 
 class AuthorListAPIView(APIView):
 
     def get(self, request):
         queryset = ListAllAuthorsService.service()
-        return PaginateService.paginate(
-            queryset, request, AuthorSerializer, page_size=5
-        )
+        return Pagination.paginate(queryset, request, AuthorSerializer)
 
     def post(self, request):
         return CreateAuthorService.service(request)
