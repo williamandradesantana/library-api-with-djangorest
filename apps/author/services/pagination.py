@@ -8,4 +8,4 @@ class PaginateService:
         paginator.page_size = page_size
         result_page = paginator.paginate_queryset(queryset, request)
         serializer = serializer_class(result_page, many=True)
-        return paginator.get_paginated_response(serializer.data)
+        return paginator.get_paginated_response({"data": serializer.data})

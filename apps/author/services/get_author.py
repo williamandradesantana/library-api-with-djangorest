@@ -13,4 +13,4 @@ class OneAuthorService:
             return Response({"Author not found"}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = AuthorSerializer(author, many=False)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"data": serializer.data}, status=status.HTTP_200_OK)

@@ -18,4 +18,4 @@ class UpdatedAuthorService:
         serializer = AuthorSerializer(author, data=author_data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"data": serializer.data}, status=status.HTTP_200_OK)
